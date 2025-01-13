@@ -4,13 +4,16 @@ class SumProvider extends ChangeNotifier {
   int number;
 
   SumProvider({
-    this.number = 10
-  });
+    this.number = 0
+    });
 
-  void plusOrLess({
-    required int newNumber,
-  }) async {
-    number = newNumber;
+  void incrementCounter() {
+    number++;
+    notifyListeners();
+  }
+
+  void decrementCounter() {
+    number--;
     notifyListeners();
   }
 }

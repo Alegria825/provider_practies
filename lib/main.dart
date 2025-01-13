@@ -15,7 +15,8 @@ class MainApp extends StatelessWidget {
     
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => SumProvider()
+        ChangeNotifierProvider(
+          create: (context) => SumProvider()
         ),
       ],
          child: const MaterialApp(

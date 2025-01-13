@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_practies/providers/sum_provider.dart';
 
-
-
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -18,44 +16,35 @@ class Homepage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 300),
-            child: 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Count: ",
-                  style: TextStyle(
-                    fontSize: 25
-                  ),
-                ),
-                Text(
-                ( context.watch<SumProvider>().number.toString() ),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              const Text(
+                "Count: ",
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                (context.watch<SumProvider>().number.toString()),
                 style: const TextStyle(fontSize: 45.0),
               ),
-              ]
-            ),
+            ]),
           ),
-           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
-            verticalDirection: VerticalDirection.down,
+          Column(            
             children: [
-            const SizedBox(height: 100),
-            ElevatedButton(onPressed: () {
-              //context.read<SumProvider>().plusOrLess();
-
-            },
-            child: const Text('+ 1', style: TextStyle(fontSize: 20),)),
-
-            const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {
-              
-            },
-            child: const Text('- 1', style: TextStyle(fontSize: 20),))
+              const SizedBox(height: 50),
+              ElevatedButton(
+                  onPressed: () {
+                    context.read<SumProvider>().incrementCounter();
+                  },
+                  child: const Icon(Icons.add)),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () {
+                    context.read<SumProvider>().decrementCounter();
+                  },
+                  child: const Icon(Icons.remove))
             ],
           ),
         ],
       ),
     );
-  } 
+  }
 }
